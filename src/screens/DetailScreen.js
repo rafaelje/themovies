@@ -4,6 +4,10 @@ import ListHorizontal from '../components/ListHorizontal'
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class DetailScreen extends React.Component {
+    static navigationOptions = {
+        header: null
+    };
+
     _onError(error){
         console.log(error)
     }

@@ -71,7 +71,6 @@ export default class ListHorizontal extends React.Component {
       }
     
       render() {
-
         if(this.state.isLoading){
           return(
             <View style={styles.container}>
@@ -87,7 +86,6 @@ export default class ListHorizontal extends React.Component {
                 <Text style={styles.title}>{this.props.title}</Text>
                 <Text style={styles.subtitle}>{this.props.subtitle}</Text>
               </View>
-              
               <TouchableOpacity onPress={ () => { this.props.navigation.navigate('FullListScreen', { title: this.props.title + ' ' + this.props.subtitle, type: this.props.type }) }}>
                 <Text style={styles.link}>Show All</Text>
               </TouchableOpacity>
