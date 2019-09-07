@@ -25,7 +25,7 @@ class ListItem extends React.PureComponent {
     }
 }
 
-export default class ListHorizontal extends React.Component {
+export default class ListGrid extends React.Component {
 
   constructor(props) {
         super(props);
@@ -48,7 +48,7 @@ export default class ListHorizontal extends React.Component {
         });
       }
     
-      componentDidMount() {    
+      componentDidMount(){    
         this._fetchData()
         this._renderItem = this._renderItem.bind(this);
       }
@@ -81,14 +81,8 @@ export default class ListHorizontal extends React.Component {
     
         return(
           <View style={styles.container}>
-            <View style={styles.header}>
-              <Text>Recomended for you</Text>
-              <TouchableOpacity onPress={ () => { this.props.navigation.navigate('FullListScreen', { type: this.props.type }) }}>
-                <Text style={styles.blue}>Show all</Text>
-              </TouchableOpacity>
-            </View>
             <FlatList
-              horizontal={true}
+              numColumns={2}
               data={this.state.dataSource}
               renderItem={this._renderItem}
               keyExtractor={({id}, index) => index.toString()}
@@ -102,12 +96,6 @@ export default class ListHorizontal extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    header: {
-      flexDirection: 'row',
-    },
-    link: {
-      color: 'blue',
-    },
     container: {
       paddingBottom: 1,
     },
