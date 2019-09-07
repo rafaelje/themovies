@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, ImageBackground, Image, ActivityIndicator } from 'react-native';
+import ListHorizontal from '../components/ListHorizontal'
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class DetailScreen extends React.Component {
     _onError(error){
@@ -39,6 +41,7 @@ export default class DetailScreen extends React.Component {
         }  
         const item = this.state.dataSource
         return(
+            <ScrollView>
             <View style={styles.container}>
                 <View>
                     <ImageBackground
@@ -64,13 +67,15 @@ export default class DetailScreen extends React.Component {
                     </View>
                     <Image style={styles.posterImage}  source={{uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }}  />                    
                 </View>
-                <View>
-                    <Text>Overview</Text>
+                <View style={styles.body}>
+                    <Text style={styles.bodyTitle}>Overview</Text>
                     <Text>{item.overview}</Text>
                 </View>
-
-
+                <View style={styles.footer}>
+                    <ListHorizontal showAll={false} title="Recommendation" navigation={this.props.navigation} type={item.id + '/recommendations'} />
+                </View>
             </View>
+            </ScrollView>
         )
     }
 }
@@ -78,6 +83,16 @@ export default class DetailScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1
+    },
+    body: {
+        padding: 20,
+    },
+    footer: {
+        padding: 20,
+    },
+    bodyTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     actions: {
         flexDirection: 'row',
@@ -102,7 +117,8 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 20,
-        color: 'white'
+        color: 'white',
+        fontWeight: 'bold',
     },
     headerSubtitle: {
         fontSize: 15,

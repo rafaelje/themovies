@@ -54,7 +54,8 @@ export default class ListHorizontal extends React.Component {
       }
     
       _onPressItem = (item) => {
-        this.props.navigation.navigate('DetailsScreen', { item: item })
+        console.log('call detail', item)
+        this.props.navigation.push('DetailsScreen', { item: item })
       };
     
       _renderItem = ({item}) => (
@@ -82,9 +83,13 @@ export default class ListHorizontal extends React.Component {
         return(
           <View style={styles.container}>
             <View style={styles.header}>
-              <Text>Recomended for you</Text>
-              <TouchableOpacity onPress={ () => { this.props.navigation.navigate('FullListScreen', { type: this.props.type }) }}>
-                <Text style={styles.blue}>Show all</Text>
+              <View style={styles.titleContainer}>
+                <Text style={styles.title}>{this.props.title}</Text>
+                <Text style={styles.subtitle}>{this.props.subtitle}</Text>
+              </View>
+              
+              <TouchableOpacity onPress={ () => { this.props.navigation.navigate('FullListScreen', { title: this.props.title + ' ' + this.props.subtitle, type: this.props.type }) }}>
+                <Text style={styles.link}>Show All</Text>
               </TouchableOpacity>
             </View>
             <FlatList
@@ -104,12 +109,24 @@ export default class ListHorizontal extends React.Component {
 const styles = StyleSheet.create({
     header: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    titleContainer: {
+      flexDirection: 'row',
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    subtitle: {
+      fontSize: 20,
+      marginLeft: 5,
     },
     link: {
       color: 'blue',
     },
     container: {
-      paddingBottom: 1,
+      padding: 5,
     },
     containerItem: {
       width: 100,

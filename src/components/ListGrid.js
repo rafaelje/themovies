@@ -29,7 +29,7 @@ export default class ListGrid extends React.Component {
 
   constructor(props) {
         super(props);
-        this.state ={ isLoading: true }
+        this.state = { isLoading: true }
       }
     
       _fetchData() {
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
       paddingBottom: 1,
     },
     containerItem: {
-      width: 100,
-      height: 175,
+      width: 150,
+      height: 225,
       padding: 5,
     },
     containerText: {

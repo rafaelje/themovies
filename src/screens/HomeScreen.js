@@ -14,10 +14,7 @@ export default class HomeScreen extends React.Component {
                     <Text style={styles.headerTitle}>THE MOVIE</Text>
                     <Text style={styles.headerIcon}>Icon</Text>
                 </View>
-
-                <Text>Home</Text>
-                <ListHorizontal navigation={this.props.navigation} type="popular" />
-
+                <ListHorizontal navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
             </View>
         )
     }
@@ -30,14 +27,13 @@ const styles = StyleSheet.create({
     header: {
       padding: 10,
       flexDirection: 'row',
-      alignContent: 'space-between',
-      backgroundColor: 'black'
+      justifyContent: 'center',
     },
     headerTitle: {
-        backgroundColor: 'blue',  
+        
     },
     headerIcon: {
-        backgroundColor: 'red'
+        
     },
     body: {
       
