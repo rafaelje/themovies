@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, Image, TouchableOpacity, ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
-class NewsListItem extends React.PureComponent {
+class ListItem extends React.PureComponent {
     _onPress = () => {
         this.props.onPressItem(this.props.item);
     };
@@ -58,7 +58,7 @@ export default class ListHorizontal extends React.Component {
       };
     
       _renderItem = ({item}) => (
-          <NewsListItem 
+          <ListItem 
             item={item}
             onPressItem={this._onPressItem}
             image={item.poster_path}
