@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component {
         return(
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.headerTitle}>THE MOVIE</Text>
+                    <Image style={styles.headerTitle} source={require('../assets/header.png')} />
                     <Text style={styles.headerIcon}>Icon</Text>
                 </View>
                 <ListHorizontal navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />

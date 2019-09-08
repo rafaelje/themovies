@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, Text, ImageBackground, Image, ActivityIndicator } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default class DetailScreen extends React.Component {
     static navigationOptions = {
@@ -57,19 +58,42 @@ export default class DetailScreen extends React.Component {
                             <Text style={styles.headerSubtitle}>{item.genres.map((value) => value.name).join(', ')}</Text>
                         </View>
                         <View style={styles.details}>
-                            <Text>Reviews</Text>
-                            <Text>Mins</Text>
-                            <Text>Date</Text>
+                            <View style={styles.detailItem}>
+                                <FontAwesomeIcon color={'white'} size={ 15 } icon="star" />
+                                <Text style={styles.detailText}>{`${item.vote_average} (${item.vote_count}) Reviews`}</Text>
+                            </View>
+                            <View style={styles.detailItem}>
+                                <FontAwesomeIcon color={'white'} size={ 15 } icon="clock" />
+                                <Text style={styles.detailText}>{`${item.runtime} mins`}</Text>
+                            </View>
+                            <View style={styles.detailItem}>
+                                <FontAwesomeIcon color={'white'} size={ 15 } icon="calendar" />
+                                <Text style={styles.detailText}>{`${item.release_date} Released`}</Text>
+                            </View>
                         </View>
                     </ImageBackground>
                     <View style={styles.grayside}>
                         <View style={styles.actions}>
-                            <Text>Watchlist</Text>
-                            <Text>Favourites</Text>
-                            <Text>Share</Text>
+                            <View style={styles.actionItem}>
+                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="list" />
+                                <Text style={styles.actionText}>Watchlist</Text>
+                            </View>
+                            <View style={styles.actionItem}>
+                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="heart" />
+                                <Text style={styles.actionText}>Favourites</Text>
+                            </View>
+                            <View style={styles.actionItem}>
+                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="share" />
+                                <Text style={styles.actionText}>Share</Text>
+                            </View>
                         </View>   
                     </View>
                     <Image style={styles.posterImage}  source={{uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }}  />                    
+                </View>
+                <View style={styles.back}>
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <FontAwesomeIcon color={'white'} size={ 27 } icon="chevron-left" />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.body}>
                     <Text style={styles.bodyTitle}>Overview</Text>
@@ -86,7 +110,29 @@ export default class DetailScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1
+      flex: 1,
+    },
+    actionItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    actionText: {
+        color: 'gray',
+        marginTop: 5,
+    },
+    detailItem:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
+    },
+    detailText: {
+        color: 'white',
+        marginLeft: 10,
+    },
+    back: {
+        position: 'absolute',
+        left: 1,
+        top: 10,
     },
     body: {
         padding: 20,
@@ -112,12 +158,14 @@ const styles = StyleSheet.create({
     grayside: {
         width: '100%',
         height: 100,
-        backgroundColor: '#CCC',
+        backgroundColor: '#EEE',
         justifyContent: 'center'
     },
     headerTitleContent: {
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 40,
+        marginLeft: 10,
+        marginRight: 10,
     },
     headerTitle: {
         fontSize: 20,
