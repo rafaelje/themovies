@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 20,
         color: 'white',
+        textAlign: 'center',
         fontWeight: 'bold',
     },
     headerSubtitle: {
