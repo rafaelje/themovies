@@ -9,7 +9,7 @@ export default class DetailScreen extends React.Component {
         header: null
     };
 
-    _onError(error){
+    _onError(error: string){
         console.log(error)
     }
 

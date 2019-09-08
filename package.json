@@ -5,7 +5,8 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "flow": "flow"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
@@ -27,6 +28,7 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "eslint": "^6.3.0",
+    "flow-bin": "0.98.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.8.6"
