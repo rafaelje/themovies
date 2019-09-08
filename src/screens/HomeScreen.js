@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -11,9 +12,11 @@ export default class HomeScreen extends React.Component {
         return(
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Image style={styles.headerTitle} source={require('../assets/header.png')} />
-                    <Text style={styles.headerIcon}>Icon</Text>
+                    <View />
+                    <Image source={require('../assets/header.png')} />
+                    <FontAwesomeIcon style={styles.headerIcon} color={'gray'} size={ 27 } icon="user-circle" />
                 </View>
+                
                 <ListHorizontal navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
             </View>
         )
@@ -27,10 +30,11 @@ const styles = StyleSheet.create({
     header: {
       padding: 10,
       flexDirection: 'row',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     headerTitle: {
-        
+        flexGrow: 1
     },
     headerIcon: {
         
