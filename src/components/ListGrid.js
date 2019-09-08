@@ -10,7 +10,7 @@ type Props = {
 
 type State = {
   isLoading: boolean,
-  dataSource?: any
+  dataSource?: Array<any>
 }
 export default class ListGrid extends React.Component<Props, State> {
 
@@ -61,10 +61,12 @@ export default class ListGrid extends React.Component<Props, State> {
     if(this.state.isLoading){
       return(
         <View style={styles.loading}>
-          <ActivityIndicator/>
+          <ActivityIndicator size="large" color="#E84E42"/>
         </View>
       )
     }
+
+    if(Array.isArray(this.state.dataSource) && this.state.dataSource.length === 0) { return null }
 
     return(
       <View style={styles.container}>

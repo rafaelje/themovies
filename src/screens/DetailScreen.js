@@ -48,7 +48,7 @@ export default class DetailScreen extends React.Component<Props, State> {
         if(this.state.isLoading){
             return(
                 <View style={styles.loading}>
-                    <ActivityIndicator/>
+                    <ActivityIndicator size="large" color="#E84E42"/>
                 </View>
             )
         }  
