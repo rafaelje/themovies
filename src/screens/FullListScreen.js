@@ -1,8 +1,8 @@
 // @flow
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ListGrid from '../components/ListGrid'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import HeaderSearch from '../components/HeaderSearch'
 
 type Props = {
     navigation: any,
@@ -27,16 +27,9 @@ export default class FullListScreen extends React.Component<Props, State> {
     }
     
     render() {
-        const Strong = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
         return(
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <FontAwesomeIcon color={'#E84E42'} size={ 27 } icon="chevron-left" />
-                    </TouchableOpacity>
-                    <Text style={styles.headerTitle}>{this.title}</Text>
-                    <FontAwesomeIcon color={'gray'} size={ 27 } icon="search" />
-                </View>
+                <HeaderSearch navigation={this.props.navigation} title={this.title} />
                 <ListGrid navigation={this.props.navigation} type={this.type} />
             </View>
         )
@@ -47,14 +40,4 @@ const styles = StyleSheet.create({
     container: {
       flex: 1
     },
-    headerTitle: {
-        color: '#E84E42',
-        fontSize: 20,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 10,
-    }
-  });
+})
