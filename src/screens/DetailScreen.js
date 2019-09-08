@@ -1,9 +1,10 @@
 // @flow
 import React from 'react'
-import { StyleSheet, View, Text, ImageBackground, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import HeaderDetail from '../components/HeaderDetail'
 
 type Props = {
     navigation: any,
@@ -18,10 +19,6 @@ export default class DetailScreen extends React.Component<Props, State> {
     static navigationOptions = {
         header: null
     };
-
-    _onError(error: string){
-        console.log(error)
-    }
     
     item: any
     constructor(props: Props) {
@@ -55,65 +52,38 @@ export default class DetailScreen extends React.Component<Props, State> {
                 </View>
             )
         }  
+        
         const item: any = this.state.dataSource
+        
         return(
             <ScrollView>
-            <View style={styles.container}>
-                <View>
-                    <ImageBackground
-                    style={styles.backgroundImage} 
-                    source={{uri: 'https://image.tmdb.org/t/p/w500/' + item.backdrop_path }} 
-                    onError={ this._onError.bind(this) }>
-                        <View style={styles.headerTitleContent}>
-                            <Text style={styles.headerTitle}>{item.title}</Text>
-                            <Text style={styles.headerSubtitle}>{item.genres.map((value: {name: string}) => value.name).join(', ')}</Text>
-                        </View>
-                        <View style={styles.details}>
-                            <View style={styles.detailItem}>
-                                <FontAwesomeIcon color={'white'} size={ 15 } icon="star" />
-                                <Text style={styles.detailText}>{`${item.vote_average} (${item.vote_count}) Reviews`}</Text>
-                            </View>
-                            <View style={styles.detailItem}>
-                                <FontAwesomeIcon color={'white'} size={ 15 } icon="clock" />
-                                <Text style={styles.detailText}>{`${item.runtime} mins`}</Text>
-                            </View>
-                            <View style={styles.detailItem}>
-                                <FontAwesomeIcon color={'white'} size={ 15 } icon="calendar" />
-                                <Text style={styles.detailText}>{`${item.release_date} Released`}</Text>
-                            </View>
-                        </View>
-                    </ImageBackground>
-                    <View style={styles.grayside}>
-                        <View style={styles.actions}>
-                            <View style={styles.actionItem}>
-                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="list" />
-                                <Text style={styles.actionText}>Watchlist</Text>
-                            </View>
-                            <View style={styles.actionItem}>
-                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="heart" />
-                                <Text style={styles.actionText}>Favourites</Text>
-                            </View>
-                            <View style={styles.actionItem}>
-                                <FontAwesomeIcon color={'gray'} size={ 20 } icon="share" />
-                                <Text style={styles.actionText}>Share</Text>
-                            </View>
-                        </View>   
+                <View style={styles.container}>
+                    <HeaderDetail 
+                        backdrop_path={item.backdrop_path}
+                        poster_path={item.poster_path}
+                        title={item.title}
+                        genres={item.genres}
+                        vote_average={item.vote_average}
+                        vote_count={item.vote_count}
+                        runtime={item.runtime}
+                        release_date={item.release_date}
+                         />
+
+                    <View style={styles.back}>
+                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                            <FontAwesomeIcon color={'white'} size={ 27 } icon="chevron-left" />
+                        </TouchableOpacity>
                     </View>
-                    <Image style={styles.posterImage}  source={{uri: 'https://image.tmdb.org/t/p/w500/' + item.poster_path }}  />                    
+                    
+                    <View style={styles.body}>
+                        <Text style={styles.bodyTitle}>Overview</Text>
+                        <Text>{item.overview}</Text>
+                    </View>
+
+                    <View style={styles.footer}>
+                        <ListHorizontal showAll={false} title="Recommendation" subtitle="" navigation={this.props.navigation} type={item.id + '/recommendations'} />
+                    </View>
                 </View>
-                <View style={styles.back}>
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <FontAwesomeIcon color={'white'} size={ 27 } icon="chevron-left" />
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.body}>
-                    <Text style={styles.bodyTitle}>Overview</Text>
-                    <Text>{item.overview}</Text>
-                </View>
-                <View style={styles.footer}>
-                    <ListHorizontal showAll={false} title="Recommendation" subtitle="" navigation={this.props.navigation} type={item.id + '/recommendations'} />
-                </View>
-            </View>
             </ScrollView>
         )
     }
