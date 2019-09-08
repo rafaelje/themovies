@@ -16,7 +16,7 @@ type State = {
 export default class FullListScreen extends React.Component<Props, State> {
     static navigationOptions = {
         header: null
-    };
+    }
 
     type: string
     title: string

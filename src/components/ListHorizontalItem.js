@@ -6,11 +6,11 @@ type props = {
   item: any,
   onPressItem: any,
   image: string
-};
+}
 export default class ListHorizontalItem extends React.PureComponent<props> {
     _onPress = (props) => {
         this.props.onPressItem(this.props.item);
-    };
+    }
 
     _onError(error: any){
         console.log(error)
@@ -27,7 +27,7 @@ export default class ListHorizontalItem extends React.PureComponent<props> {
             </Image>
           </View>
         </TouchableOpacity>
-        );
+        )
     }
 }
 

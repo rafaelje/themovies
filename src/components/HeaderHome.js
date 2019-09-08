@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: 'center',
     },
-  });
+})
 
-  export default HeaderHome;
+  export default HeaderHome

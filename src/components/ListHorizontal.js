@@ -8,12 +8,12 @@ type Props = {
   navigation: any,
   title: string,
   subtitle: string,
-};
+}
 
 type State = {
   isLoading: boolean,
   dataSource?: any
-};
+}
 
 export default class ListHorizontal extends React.Component<Props, State> {
 
@@ -62,11 +62,13 @@ export default class ListHorizontal extends React.Component<Props, State> {
   render() {
     if(this.state.isLoading){
       return(
-        <View style={styles.container}>
+        <View style={styles.loading}>
           <ActivityIndicator/>
         </View>
       )
     }
+
+    if(this.state.dataSource.length === 0) { return null }
 
     const Header = () => {
       return(
@@ -100,26 +102,31 @@ export default class ListHorizontal extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-    header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    headerContainer: {
-      flexDirection: 'row',
-    },
-    headerTitle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    headerSubtitle: {
-      fontSize: 20,
-      marginLeft: 5,
-    },
-    headerLink: {
-      color: 'blue',
-    },
-    container: {
-      padding: 5,
-    },
-  });
+  container: {
+    padding: 5,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center'
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  headerSubtitle: {
+    fontSize: 20,
+    marginLeft: 5,
+  },
+  headerLink: {
+    color: 'blue',
+  },
+});
   

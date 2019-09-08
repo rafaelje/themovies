@@ -6,12 +6,12 @@ type Props = {
     item: any,
     onPressItem: any,
     image: string
-};
+}
   
 export default class ListGridItem extends React.PureComponent<Props> {
     _onPress = (props) => {
         this.props.onPressItem(this.props.item);
-    };
+    }
 
     _onError(error){
         console.log(error)
@@ -28,7 +28,7 @@ export default class ListGridItem extends React.PureComponent<Props> {
             </Image>
         </View>
         </TouchableOpacity>
-        );
+        )
     }
 }
 

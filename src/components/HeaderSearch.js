@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 type Props = {
     navigation: any,
     title: string,
-};
+}
   
 export default class HeaderSearch extends React.PureComponent<Props> {
 

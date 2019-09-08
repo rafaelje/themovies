@@ -18,7 +18,7 @@ type State = {
 export default class DetailScreen extends React.Component<Props, State> {
     static navigationOptions = {
         header: null
-    };
+    }
     
     item: any
     constructor(props: Props) {
@@ -41,13 +41,13 @@ export default class DetailScreen extends React.Component<Props, State> {
           })
           .catch((error: string) =>{
             console.error(error);
-        });
+        })
       }
 
     render() {
         if(this.state.isLoading){
             return(
-                <View style={styles.container}>
+                <View style={styles.loading}>
                     <ActivityIndicator/>
                 </View>
             )
@@ -75,8 +75,8 @@ export default class DetailScreen extends React.Component<Props, State> {
                         </TouchableOpacity>
                     </View>
                     
-                    <View style={styles.body}>
-                        <Text style={styles.bodyTitle}>Overview</Text>
+                    <View style={styles.overview}>
+                        <Text style={styles.overviewTitle}>Overview</Text>
                         <Text>{item.overview}</Text>
                     </View>
 
@@ -90,88 +90,28 @@ export default class DetailScreen extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center'
+    },    
     container: {
       flex: 1,
-    },
-    actionItem: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    actionText: {
-        color: 'gray',
-        marginTop: 5,
-    },
-    detailItem:{
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 5,
-    },
-    detailText: {
-        color: 'white',
-        marginLeft: 10,
     },
     back: {
         position: 'absolute',
         left: 1,
         top: 10,
     },
-    body: {
+    overview: {
         padding: 20,
+    },
+    overviewTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     footer: {
         padding: 20,
     },
-    bodyTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    actions: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginLeft: 150, 
-        marginRight: 20,
-    },
-    details: {
-        position: 'absolute',
-        bottom: 5,
-        left: 130
-    },
-    grayside: {
-        width: '100%',
-        height: 100,
-        backgroundColor: '#EEE',
-        justifyContent: 'center'
-    },
-    headerTitleContent: {
-        alignItems: 'center',
-        marginTop: 40,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    headerTitle: {
-        fontSize: 20,
-        color: 'white',
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    headerSubtitle: {
-        fontSize: 15,
-        color: 'white'
-    },
-
-    backgroundImage: {
-        width: '100%',
-        height: 200,
-        resizeMode: 'cover'
-    },  
-    posterImage: {
-        position: 'absolute',
-        top: 113,
-        left: 20,
-        width: 100,
-        height: 175,
-        resizeMode: 'cover',
-        borderRadius: 5,
-    },  
-  });
+})
   

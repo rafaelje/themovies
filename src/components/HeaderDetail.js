@@ -12,7 +12,7 @@ type Props = {
     runtime: string,
     release_date: string,
     poster_path: string,
-};
+}
   
 export default class HeaderDetail extends React.PureComponent<Props> {
     
@@ -71,9 +71,6 @@ export default class HeaderDetail extends React.PureComponent<Props> {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
     actionItem: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -90,21 +87,6 @@ const styles = StyleSheet.create({
     detailText: {
         color: 'white',
         marginLeft: 10,
-    },
-    back: {
-        position: 'absolute',
-        left: 1,
-        top: 10,
-    },
-    body: {
-        padding: 20,
-    },
-    footer: {
-        padding: 20,
-    },
-    bodyTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
     },
     actions: {
         flexDirection: 'row',
@@ -154,4 +136,4 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         borderRadius: 5,
     },  
-  });
+})

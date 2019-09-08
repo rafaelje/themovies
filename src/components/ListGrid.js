@@ -6,16 +6,16 @@ import ListGridItem from './ListGridItem'
 type Props = {
   type: string,
   navigation: any,
-};
+}
 
 type State = {
   isLoading: boolean,
   dataSource?: any
-};
+}
 export default class ListGrid extends React.Component<Props, State> {
 
   constructor(props: Props) {
-    super(props);
+    super(props)
     this.state = { isLoading: true }
   }
 
@@ -78,7 +78,7 @@ export default class ListGrid extends React.Component<Props, State> {
           refreshing={this.state.isLoading}
         />
       </View>
-    );
+    )
   }    
 }
 
