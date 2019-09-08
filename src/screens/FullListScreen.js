@@ -1,14 +1,26 @@
+// @flow
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import ListGrid from '../components/ListGrid'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-export default class FullListScreen extends React.Component {
+type Props = {
+    navigation: any,
+}
+  
+type State = {
+    isLoading: boolean,
+    dataSource?: any
+}
+
+export default class FullListScreen extends React.Component<Props, State> {
     static navigationOptions = {
         header: null
     };
 
-    constructor(props) {
+    type: string
+    title: string
+    constructor(props: Props) {
         super(props)
         this.type = this.props.navigation.getParam('type')
         this.title = this.props.navigation.getParam('title')

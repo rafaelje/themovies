@@ -1,9 +1,14 @@
+// @flow
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-export default class HomeScreen extends React.Component {
+type Props = {
+    navigation: any,
+}
+  
+export default class HomeScreen extends React.Component<Props> {
     static navigationOptions = {
         header: null
     };

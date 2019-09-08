@@ -1,10 +1,20 @@
+// @flow
 import React from 'react'
 import { StyleSheet, View, Text, ImageBackground, Image, ActivityIndicator } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-export default class DetailScreen extends React.Component {
+type Props = {
+    navigation: any,
+}
+  
+type State = {
+    isLoading: boolean,
+    dataSource?: any
+}
+
+export default class DetailScreen extends React.Component<Props, State> {
     static navigationOptions = {
         header: null
     };
@@ -12,8 +22,9 @@ export default class DetailScreen extends React.Component {
     _onError(error: string){
         console.log(error)
     }
-
-    constructor(props) {
+    
+    item: any
+    constructor(props: Props) {
         super(props)
         this.item = props.navigation.getParam('item')
         this.state = { isLoading: true }
@@ -31,7 +42,7 @@ export default class DetailScreen extends React.Component {
     
             });
           })
-          .catch((error) =>{
+          .catch((error: string) =>{
             console.error(error);
         });
       }
@@ -44,7 +55,7 @@ export default class DetailScreen extends React.Component {
                 </View>
             )
         }  
-        const item = this.state.dataSource
+        const item: any = this.state.dataSource
         return(
             <ScrollView>
             <View style={styles.container}>
@@ -55,7 +66,7 @@ export default class DetailScreen extends React.Component {
                     onError={ this._onError.bind(this) }>
                         <View style={styles.headerTitleContent}>
                             <Text style={styles.headerTitle}>{item.title}</Text>
-                            <Text style={styles.headerSubtitle}>{item.genres.map((value) => value.name).join(', ')}</Text>
+                            <Text style={styles.headerSubtitle}>{item.genres.map((value: {name: string}) => value.name).join(', ')}</Text>
                         </View>
                         <View style={styles.details}>
                             <View style={styles.detailItem}>
@@ -100,7 +111,7 @@ export default class DetailScreen extends React.Component {
                     <Text>{item.overview}</Text>
                 </View>
                 <View style={styles.footer}>
-                    <ListHorizontal showAll={false} title="Recommendation" navigation={this.props.navigation} type={item.id + '/recommendations'} />
+                    <ListHorizontal showAll={false} title="Recommendation" subtitle="" navigation={this.props.navigation} type={item.id + '/recommendations'} />
                 </View>
             </View>
             </ScrollView>

@@ -35,8 +35,6 @@ class ListItem extends React.PureComponent<props> {
 type Props = {
   type: string,
   navigation: any,
-  title: string,
-  subtitle: string,
 };
 
 type State = {
