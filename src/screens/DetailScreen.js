@@ -40,7 +40,7 @@ export default class DetailScreen extends React.Component {
         if(this.state.isLoading){
             return(
                 <View style={styles.container}>
-                <ActivityIndicator/>
+                    <ActivityIndicator/>
                 </View>
             )
         }  
