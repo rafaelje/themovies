@@ -12,7 +12,7 @@ class ListItem extends React.PureComponent<props> {
         this.props.onPressItem(this.props.item);
     };
 
-    _onError(error){
+    _onError(error: any){
         console.log(error)
     }
 
@@ -61,7 +61,7 @@ export default class ListHorizontal extends React.Component<Props, State> {
     
             });
           })
-          .catch((error) =>{
+          .catch((error: any) =>{
             console.error(error);
         });
       }

@@ -1,8 +1,15 @@
+// @flow
 import React from 'react';
 import { FlatList, Image, TouchableOpacity, ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
-class ListItem extends React.PureComponent {
-    _onPress = () => {
+type props = {
+  item: any,
+  onPressItem: any,
+  image: string
+};
+
+class ListItem extends React.PureComponent<props> {
+    _onPress = (props) => {
         this.props.onPressItem(this.props.item);
     };
 
@@ -25,9 +32,20 @@ class ListItem extends React.PureComponent {
     }
 }
 
-export default class ListGrid extends React.Component {
+type Props = {
+  type: string,
+  navigation: any,
+  title: string,
+  subtitle: string,
+};
 
-  constructor(props) {
+type State = {
+  isLoading: boolean,
+  dataSource?: any
+};
+export default class ListGrid extends React.Component<Props, State> {
+
+  constructor(props: Props) {
         super(props);
         this.state = { isLoading: true }
       }
@@ -43,7 +61,7 @@ export default class ListGrid extends React.Component {
     
             });
           })
-          .catch((error) =>{
+          .catch((error: any) =>{
             console.error(error);
         });
       }
