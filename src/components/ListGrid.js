@@ -60,7 +60,7 @@ export default class ListGrid extends React.Component<Props, State> {
 
     if(this.state.isLoading){
       return(
-        <View style={styles.container}>
+        <View style={styles.loading}>
           <ActivityIndicator/>
         </View>
       )
@@ -86,5 +86,10 @@ const styles = StyleSheet.create({
     container: {
       paddingBottom: 1,
     },
+    loading: {
+      flex: 1,
+      justifyContent: 'center',
+      alignContent: 'center'
+  },    
 })
   

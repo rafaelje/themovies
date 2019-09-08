@@ -12,7 +12,7 @@ type Props = {
 
 type State = {
   isLoading: boolean,
-  dataSource?: any
+  dataSource?: Array<any>
 }
 
 export default class ListHorizontal extends React.Component<Props, State> {
@@ -68,7 +68,7 @@ export default class ListHorizontal extends React.Component<Props, State> {
       )
     }
 
-    if(this.state.dataSource.length === 0) { return null }
+    if(Array.isArray(this.state.dataSource) && this.state.dataSource.length === 0) { return null }
 
     const Header = () => {
       return(
