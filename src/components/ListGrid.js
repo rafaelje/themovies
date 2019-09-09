@@ -86,7 +86,7 @@ export default class ListGrid extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
-      paddingBottom: 1,
+      paddingBottom: 50,
     },
     loading: {
       flex: 1,
