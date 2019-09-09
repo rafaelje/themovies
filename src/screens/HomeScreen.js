@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View, Image } from 'react-native';
 import ListHorizontal from '../components/ListHorizontal'
 import HeaderHome from '../components/HeaderHome'
+import { ScrollView } from 'react-native-gesture-handler';
 
 type Props = {
     navigation: any,
@@ -17,7 +18,12 @@ export default class HomeScreen extends React.Component<Props> {
         return(
             <View style={styles.container}>
                 <HeaderHome />
-                <ListHorizontal showAll navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
+                <ScrollView>
+                    <ListHorizontal showAll navigation={this.props.navigation} title="Recommend" subtitle="For You" type="now_playing" />
+                    <ListHorizontal showAll navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
+                    <ListHorizontal showAll navigation={this.props.navigation} title="Comming" subtitle="Soon" type="upcoming" />
+                    <ListHorizontal showAll navigation={this.props.navigation} title="Top Rated" subtitle="Movie" type="top_rated" />
+                </ScrollView>
             </View>
         )
     }

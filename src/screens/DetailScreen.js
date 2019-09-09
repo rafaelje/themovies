@@ -78,6 +78,7 @@ export default class DetailScreen extends React.Component<Props, State> {
                     <View style={styles.overview}>
                         <Text style={styles.overviewTitle}>Overview</Text>
                         <Text>{item.overview}</Text>
+                        <Text style={styles.readMore}>Read More</Text>
                     </View>
 
                     <View style={styles.footer}>
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignContent: 'center'
-    },    
+    },
     container: {
       flex: 1,
     },
@@ -112,6 +113,9 @@ const styles = StyleSheet.create({
     },
     footer: {
         padding: 20,
+    },
+    readMore: {
+        color: 'blue'
     },
 })
   
