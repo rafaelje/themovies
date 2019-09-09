@@ -23,7 +23,7 @@ export default class ListGridItem extends React.PureComponent<Props> {
         <TouchableOpacity onPress={this._onPress}>
             <View style={styles.container}>
                 <Image 
-                    style={[styles.image, {width: (WINDOWS_WIDTH-20)/2}]} 
+                    style={[styles.image, {width: (WINDOWS_WIDTH-40)/2}]} 
                     source={{uri: 'https://image.tmdb.org/t/p/w500' + this.props.image }} 
                     onError={ this._onError.bind(this) } />
             </View>
@@ -35,7 +35,7 @@ export default class ListGridItem extends React.PureComponent<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 5,
+        padding: 10,
     },
     image: {
       height: 250,
