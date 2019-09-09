@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     back: {
         position: 'absolute',
         left: 1,
-        top: 10,
+        top: 40,
     },
     overview: {
         padding: 20,

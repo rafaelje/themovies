@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     headerTitleContent: {
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: 100,
         marginLeft: 10,
         marginRight: 10,
     },
@@ -124,12 +124,12 @@ const styles = StyleSheet.create({
 
     backgroundImage: {
         width: '100%',
-        height: 200,
+        height: 300,
         resizeMode: 'cover'
     },  
     posterImage: {
         position: 'absolute',
-        top: 113,
+        top: 210,
         left: 20,
         width: 100,
         height: 175,
