@@ -17,7 +17,7 @@ export default class HomeScreen extends React.Component<Props> {
         return(
             <View style={styles.container}>
                 <HeaderHome />
-                <ListHorizontal navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
+                <ListHorizontal showAll navigation={this.props.navigation} title="Popular" subtitle="Movies" type="popular" />
             </View>
         )
     }

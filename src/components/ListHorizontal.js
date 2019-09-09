@@ -8,6 +8,7 @@ type Props = {
   navigation: any,
   title: string,
   subtitle: string,
+  showAll: boolean,
 }
 
 type State = {
@@ -70,6 +71,15 @@ export default class ListHorizontal extends React.Component<Props, State> {
 
     if(Array.isArray(this.state.dataSource) && this.state.dataSource.length === 0) { return null }
 
+    const ShowAll = (props) => {
+      if(props.showAll === false) { return null }
+      return (
+        <TouchableOpacity onPress={ () => { props.navigation.navigate('FullListScreen', { title: props.title + ' ' + props.subtitle, type: props.type }) }}>
+          <Text style={styles.headerLink}>Show All</Text>
+        </TouchableOpacity>
+      )
+    }
+
     const Header = () => {
       return(
         <View style={styles.header}>
@@ -77,9 +87,12 @@ export default class ListHorizontal extends React.Component<Props, State> {
             <Text style={styles.headerTitle}>{this.props.title}</Text>
             <Text style={styles.headerSubtitle}>{this.props.subtitle}</Text>
           </View>
-          <TouchableOpacity onPress={ () => { this.props.navigation.navigate('FullListScreen', { title: this.props.title + ' ' + this.props.subtitle, type: this.props.type }) }}>
-            <Text style={styles.headerLink}>Show All</Text>
-          </TouchableOpacity>
+          <ShowAll
+            navigation={this.props.navigation} 
+            showAll={this.props.showAll} 
+            title={this.props.title} 
+            subtitle={this.props.subtitle} 
+            type={this.props.type} />
         </View>
       )
     }
