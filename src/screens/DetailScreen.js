@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     readMore: {
-        color: 'blue'
+        color: 'blue',
+        marginTop: 5,
     },
 })
   
