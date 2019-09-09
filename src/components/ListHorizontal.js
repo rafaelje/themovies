@@ -56,10 +56,6 @@ export default class ListHorizontal extends React.Component<Props, State> {
       />
   )
 
-  _onRefresh() {
-    this.setState({ isLoading: true }, function() { this._fetchData() });
-  }
-
   render() {
     if(this.state.isLoading){
       return(
@@ -106,8 +102,6 @@ export default class ListHorizontal extends React.Component<Props, State> {
           renderItem={this._renderItem}
           keyExtractor={({id}, index) => index.toString()}
           extraData={this.state}
-          onRefresh={() => this._onRefresh()}
-          refreshing={this.state.isLoading}
         />
       </View>
     );
