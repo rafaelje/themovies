@@ -16,7 +16,7 @@ Is a react native application to display movie information, the application is a
 
 
 ### Instalation
-- run `npm install` or `yarn install`
+- run `yarn install`
 - Open iOS folder `cd ios` and run `pod install`
 
 ### Run on Devices or simulator
